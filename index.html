@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quer ser minha para sempre?</title>
+    <title>Uma perguntinha!</title>
     <style>
         body {
             display: flex;
@@ -28,32 +28,49 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        #no-button {
+        #no-button-1, #no-button-2 {
             position: absolute;
+            transition: transform 0.1s ease;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Você tem certeza?</h1>
+        <h1>Pergunta 1: Você quer ser minha para sempre?</h1>
         <div class="button-container">
-            <button onclick="alert('Sabia que você aceitaria!')">Sim</button>
-            <button id="no-button" onmouseover="moveButton()">Não</button>
+            <button onclick="alert('Sabia que você concordava!')">Sim</button>
+            <button id="no-button-1" onmouseover="moveOrHideButton('no-button-1')">Não</button>
+        </div>
+
+        <h1 style="margin-top: 40px;">Pergunta 2: Tem certeza?</h1>
+        <div class="button-container">
+            <button onclick="alert('Ótimo, vamos continuar!')">Sim</button>
+            <button id="no-button-2" onmouseover="moveOrHideButton('no-button-2')">Não</button>
         </div>
     </div>
 
     <script>
-        function moveButton() {
-            const button = document.getElementById('no-button');
+        function moveOrHideButton(buttonId) {
+            const button = document.getElementById(buttonId);
             const container = button.parentElement;
             const containerWidth = container.offsetWidth;
             const containerHeight = container.offsetHeight;
 
+            // Gera uma posição aleatória
             const newLeft = Math.random() * (containerWidth - button.offsetWidth);
             const newTop = Math.random() * (containerHeight - button.offsetHeight);
 
+            // Move o botão para a nova posição
             button.style.left = `${newLeft}px`;
             button.style.top = `${newTop}px`;
+
+            // Às vezes, esconde o botão
+            if (Math.random() > 0.5) {
+                button.style.opacity = 0;
+                setTimeout(() => {
+                    button.style.opacity = 1;
+                }, 1000); // O botão reaparece após 1 segundo
+            }
         }
     </script>
 </body>
