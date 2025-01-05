@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer ser minha para sempre?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        .button-container {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #no-button {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Você tem certeza?</h1>
+        <div class="button-container">
+            <button onclick="alert('Sabia que você aceitaria!')">Sim</button>
+            <button id="no-button" onmouseover="moveButton()">Não</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const button = document.getElementById('no-button');
+            const container = button.parentElement;
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+
+            const newLeft = Math.random() * (containerWidth - button.offsetWidth);
+            const newTop = Math.random() * (containerHeight - button.offsetHeight);
+
+            button.style.left = `${newLeft}px`;
+            button.style.top = `${newTop}px`;
+        }
+    </script>
+</body>
+</html>
